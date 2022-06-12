@@ -4,13 +4,20 @@ import pandas as pd
 import psycopg2
 
 def getdata(sql):
-    conn = psycopg2.connect( database="mysys", user='dbadmin', password='dbadmin1234', host='127.0.0.1', port= '5432')
-    cursor = conn.cursor()
-    cursor.execute(sql)
-    data = cursor.fetchall()
-    logging.info(data)
-    conn.close()
-    return data
+    data = []
+    try:
+        conn = psycopg2.connect(database="mysys", user='dbadmin', password='dbadmin1234', host='127.0.0.1', port='5432')
+        cursor = conn.cursor()
+        cursor.execute(sql)
+        data = cursor.fetchall()
+        logging.info(data)
+        conn.close()
+
+    except Exception as ex:
+        logging.error(ex)
+        raise Exception (ex)
+    finally:
+        return data
 
 def main():
     try:
