@@ -4,9 +4,7 @@ import pandas as pd
 from DataSource import DataSource
 from PGDBConn import PGDBConn
 from MSDBConn import MSDBConn
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-import smtplib
+
 
 class dataCompare:
 
@@ -22,9 +20,9 @@ class dataCompare:
     def sendReport(self, report):
         # logging.info(report.report())
         # The mail addresses and password
-        sender_address = 'xxxxgmail.com'
-        sender_pass = 'xxx'
-        receiver_address = 'xxx@gmail.com'
+        sender_address = 'joey.cm.lam@gmail.com'
+        sender_pass = 'xuifotddmmkzclnk'
+        receiver_address = 'joey.cm.lam@gmail.com'
         # Setup the MIME
         message = MIMEMultipart()
         message['From'] = sender_address
