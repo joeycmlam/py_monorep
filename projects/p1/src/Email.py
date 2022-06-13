@@ -3,26 +3,28 @@ from email.mime.text import MIMEText
 import smtplib
 
 
-class Email:
+class Email(object):
     _instance = None
-    _receipt = None
+    _sender_address = None
+    _sender_pass = None
 
-    def sendEmail(self, msg):
-        sender_address = 'xxxxx@gmail.com'
-        sender_pass = 'xxxxx'
-        receiver_address = 'xxxx@gmail.com'
+    def __init__(self):
+        self._sender_address = "joey.cm.lam@gmail.com"
+        self._sender_pass = 'xxxxxx'
+
+    def sendEmail(self, recipents, msg):
+        receiver_address = recipents
         # Setup the MIME
         message = MIMEMultipart()
-        message['From'] = sender_address
+        message['From'] = self._sender_address
         message['To'] = receiver_address
-        message['Subject'] = 'A test mail sent by Python. It has an attachment.'  # The subject line
+        message['Subject'] = 'A test mail sent by Python.'  # The subject line
         # The body and the attachments for the mail
         # message.attach(MIMEText(mail_content, 'plain'))
         # Create SMTP session for sending the mail
         session = smtplib.SMTP('smtp.gmail.com', 587)  # use gmail with port
         session.starttls()  # enable security
-        session.login(sender_address, sender_pass)  # login with mail_id and password
-        text = report.report()
-        session.sendmail(sender_address, receiver_address, text)
+        session.login(self._sender_address, self._sender_pass)  # login with mail_id and password
+        session.sendmail(self._sender_address, receiver_address, msg)
         session.quit()
 
