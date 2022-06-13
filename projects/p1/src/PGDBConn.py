@@ -1,6 +1,8 @@
 import psycopg2
+from DataSource import DataSource
 
-class PGDBConn(object):
+
+class PGDBConn(DataSource):
     _instance = None
     _conn = None
     _database = None

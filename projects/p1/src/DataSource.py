@@ -1,5 +1,6 @@
+from abc import ABC
 
-class DataSource():
+class DataSource(ABC):
 
     def getInstance(self):
         pass
