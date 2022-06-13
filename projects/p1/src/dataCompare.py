@@ -33,8 +33,7 @@ class dataCompare:
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, format="%(asctime)s :%(levelname)s: %(name)s: %(message)s")
     try:
-        db = PGDBConn("mysys", "dbadmin", "dbadmin1234", "127.0.0.1", "5432")
-        app = dataCompare(db)
+        app = dataCompare(PGDBConn("mysys", "dbadmin", "dbadmin1234", "127.0.0.1", "5432"))
         app.run()
         SystemExit(0)
     except Exception as ex:
