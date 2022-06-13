@@ -4,7 +4,7 @@ DROP TABLE IF EXISTS mydb.t2;
 
 CREATE TABLE IF NOT EXISTS mydb.t2
 (
-    fnd_id character varying(10) COLLATE pg_catalog."default" NOT NULL,
+    fnd_id varchar(10) NOT NULL,
     fnd_ver varchar(5) not null,
     nav_price numeric(20,6) NOT NULL
 )
